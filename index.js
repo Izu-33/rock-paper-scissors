@@ -35,15 +35,28 @@ function playRound(humanChoice, computerChoice) {
         humanChoice === "scissors" && computerChoice === "paper"
     ) {
         humanScore++;
-        console.log(`You win! ${humanChoice} beats ${computerChoice}. 
+        console.log(`You won this round! ${humanChoice} beats ${computerChoice}. 
                     Player: ${humanScore} vs Computer: ${computerScore}`);
     } else {
         computerScore++;
-        console.log(`You lose. ${humanChoice} loses to ${computerChoice}. 
+        console.log(`You lost this round. ${humanChoice} loses to ${computerChoice}. 
                     Player: ${humanScore} vs Computer: ${computerScore}`);
     }
 };
 
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
-playRound(humanChoice, computerChoice);
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
+    };
+
+    if(humanScore > computerScore) {
+        console.log(`You won -> Player: ${humanScore} vs Computer: ${computerScore}`);
+    } else {
+        console.log(`You lost -> Player: ${humanScore} vs Computer: ${computerScore}`);
+    }
+}
+
+playGame();
+
